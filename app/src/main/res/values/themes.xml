@@ -3,7 +3,23 @@
     <style name="Base.Theme.NotasYNavegación" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/my_primary</item> <!-- app bar color -->
+        <item name="colorPrimaryDark">@color/my_primary_dark</item> <!-- app bar color -->
+        <item name="colorSecondary">@color/my_secondary</item> <!-- toggle states, FAB, chips -->
+        <item name="colorTertiary">@color/my_tertiary
+        </item> <!-- custom illustrations, info messages -->
+        <item name="android:colorBackground">@color/my_background</item> <!-- background color -->
     </style>
 
+
     <style name="Theme.NotasYNavegación" parent="Base.Theme.NotasYNavegación" />
+
+    <color name="my_primary">@color/blue</color>
+    <color name="my_primary_dark">@color/violet</color>
+    <color name="my_secondary">@color/green</color>
+    <color name="my_secondary_dark">@color/blue</color>
+    <color name="my_tertiary">@color/yellow</color>
+    <color name="my_tertiary_dark">@color/orange</color>
+    <color name="my_background">@color/base3</color>
+    <color name="my_background_dark">@color/cyan</color>
 </resources>
