@@ -43,3 +43,9 @@ app/src/main/res/layout/
 - [ ] Agregar recordatorios con notificaciones
 - [ ] Exportar notas a archivo de texto
 - [ ] Modo oscuro/claro
+
+## Consideraciones personales
+
+- Compatibilidad mínima: API 23 (Marshmallow, Android 6.0)
+- Layout adicional para orientación horizontal
+- `viewModel` para preservar los valores ante cambios de configuración de dispositivo
