@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.jetbrains.kotlin.android.parcelize)
+    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
 }
 
 android {
@@ -52,16 +53,31 @@ dependencies {
 
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.recyclerview)
+    implementation(libs.kotlin.stdlib.jdk8)
 
     /* Room components */
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
 
+    // Views/Fragments Integration
+//    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
+
+    // Feature module support for Fragments
+//    implementation(libs.androidx.navigation.dynamic.features.fragment)
+
+    // JSON serialization library, works with the Kotlin serialization plugin.
+    implementation(libs.kotlinx.serialization.json)
+
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
+
     androidTestImplementation(libs.androidx.room.testing)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    coreLibraryDesugaring(libs.desugar.jdk.libs)
+    // Testing Navigation
+    androidTestImplementation(libs.androidx.navigation.testing)
+
 }
