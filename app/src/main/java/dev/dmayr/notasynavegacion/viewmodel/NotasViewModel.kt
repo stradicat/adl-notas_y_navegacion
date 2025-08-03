@@ -1,42 +1,36 @@
 package dev.dmayr.notasynavegacion.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import dev.dmayr.notasynavegacion.data.NotasManager
+import androidx.lifecycle.viewModelScope
+import dev.dmayr.notasynavegacion.data.NotaBBDD
 import dev.dmayr.notasynavegacion.model.Nota
+import dev.dmayr.notasynavegacion.repository.NotaRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class NotasViewModel : ViewModel() {
-
-    private val _notas = MutableLiveData<List<Nota>>()
-    val notas: LiveData<List<Nota>> = _notas
+class NotasViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository: NotaRepository
+    val notas: LiveData<List<Nota>>
 
     init {
-        cargarNotas()
+        val dao = NotaBBDD.getDatabase(application).notaDao()
+        repository = NotaRepository(dao)
+        notas = repository.allNotas
     }
 
-    fun cargarNotas() {
-        _notas.value = NotasManager.obtenerNotas()
+    suspend fun agregarNota(nota: Nota): Long {
+        return repository.insert(nota)
     }
 
-    fun agregarNota(nota: Nota) {
-        NotasManager.agregarNota(nota)
-        cargarNotas()
+    fun updateNota(nota: Nota) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update(nota)
     }
 
-    fun eliminarNota(id: Long) {
-        NotasManager.eliminarNota(id)
-        cargarNotas()
+    fun deleteNota(nota: Nota) = viewModelScope.launch(Dispatchers.IO) {
+        repository.delete(nota)
     }
 
-    fun buscarNotas(query: String) {
-        _notas.value = NotasManager.buscarNotas(query)
-    }
-
-    fun obtenerNotaPorId(id: Long): Nota? = NotasManager.obtenerNotaPorId(id)
-
-    fun actualizarNota(nota: Nota) {
-        NotasManager.actualizarNota(nota)
-        cargarNotas()
-    }
+    suspend fun obtenerPorId(id: Long): Nota? = repository.getById(id)
 }
