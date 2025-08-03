@@ -16,7 +16,7 @@
 
 
         <TextView
-            android:id="@+id/titleListaDeTareas"
+            android:id="@+id/titleListaDeNotas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -34,13 +34,13 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_margin="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/rvTareas"
+            app:layout_constraintBottom_toTopOf="@+id/rvNotas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleListaDeTareas" />
+            app:layout_constraintTop_toBottomOf="@+id/titleListaDeNotas" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvTareas"
+            android:id="@+id/rvNotas"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="16dp"
@@ -50,7 +50,7 @@
             tools:layout_editor_absoluteX="16dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btnAgregarTarea"
+            android:id="@+id/btnAgregarNota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -63,8 +63,8 @@
             app:fabCustomSize="48dp"
             app:flow_horizontalAlign="center"
             app:flow_verticalAlign="center"
-            app:layout_constraintBottom_toBottomOf="@+id/rvTareas"
-            app:layout_constraintEnd_toEndOf="@+id/rvTareas"
+            app:layout_constraintBottom_toBottomOf="@+id/rvNotas"
+            app:layout_constraintEnd_toEndOf="@+id/rvNotas"
             app:layout_constraintTop_toTopOf="@+id/btnBorrarTodasLasTareas"
             app:maxImageSize="32dp"
             app:tint="@color/base2"
@@ -84,8 +84,8 @@
             app:fabCustomSize="48dp"
             app:flow_horizontalAlign="center"
             app:flow_verticalAlign="center"
-            app:layout_constraintBottom_toBottomOf="@+id/rvTareas"
-            app:layout_constraintStart_toStartOf="@+id/rvTareas"
+            app:layout_constraintBottom_toBottomOf="@+id/rvNotas"
+            app:layout_constraintStart_toStartOf="@+id/rvNotas"
             app:maxImageSize="32dp"
             app:tint="@color/base2"
             tools:ignore="HardcodedText" />
