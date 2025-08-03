@@ -51,7 +51,6 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.recyclerview)
     implementation(libs.kotlin.stdlib.jdk8)
 
@@ -59,13 +58,6 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
-
-    // Views/Fragments Integration
-//    implementation(libs.androidx.navigation.fragment)
-    implementation(libs.androidx.navigation.ui)
-
-    // Feature module support for Fragments
-//    implementation(libs.androidx.navigation.dynamic.features.fragment)
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
