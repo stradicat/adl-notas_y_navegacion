@@ -67,6 +67,9 @@ dependencies {
     // Feature module support for Fragments
 //    implementation(libs.androidx.navigation.dynamic.features.fragment)
 
+    // ViewModel
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
     // JSON serialization library, works with the Kotlin serialization plugin.
     implementation(libs.kotlinx.serialization.json)
 
