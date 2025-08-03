@@ -12,6 +12,7 @@
         android:background="@color/my_background">
 
         <SearchView
+            android:id="@+id/buscaNotas"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:background="@color/base2"

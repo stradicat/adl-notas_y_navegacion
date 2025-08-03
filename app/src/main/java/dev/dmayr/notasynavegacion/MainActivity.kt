@@ -2,6 +2,8 @@ package dev.dmayr.notasynavegacion
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -42,8 +44,8 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context)
         }
 
-        viewModel.notas.observe(this) {
-            adapter.enviarLista(it)
+        viewModel.notas.observe(this) { notas ->
+            adapter.enviarLista(notas)
         }
 
         binding.btnAgregarNota.setOnClickListener {
@@ -67,6 +69,24 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
+        binding.toolbarBusqueda.buscaNotas.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.buscarNotas(query ?: "")
+
+                binding.toolbarBusqueda.buscaNotas.clearFocus()
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.toolbarBusqueda.buscaNotas.windowToken, 0)
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.buscarNotas(newText ?: "")
+                return true
+            }
+        })
 
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
