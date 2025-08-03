@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Notas y Navegación</string>
+    <string name="tv_title_bloc_de_notas">Bloc de Notas</string>
+    <string name="tv_borrar_todas_las_notas">BORRAR\nTODAS LAS\nNOTAS</string>
+    <string name="tv_agregar_nota">AGREGAR\nNOTA</string>
+    <string name="tv_titulo_de_nota">Título de Nota</string>
+    <string name="tv_fecha">Fecha</string>
+    <string name="hint_titulo_de_la_nota">Título de la nota</string>
+    <string name="hint_et_contenido">Ej.: \"Querido diario\",\n\n- 1 kg de arroz\n- 2l de leche\n\n* Idea genial:\n\n > Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.</string>
+    <string name="btn_eliminar">Borrar</string>
+    <string name="btn_guardar">Guardar</string>
 </resources>
