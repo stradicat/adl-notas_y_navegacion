@@ -13,7 +13,6 @@ class NotasAdapter(
     private val onNotaClick: (Nota) -> Unit
 ) : RecyclerView.Adapter<NotasAdapter.NotaViewHolder>() {
 
-    private lateinit var binding: ItemNotaBinding
     private var notas = listOf<Nota>()
 
     fun enviarLista(nuevaLista: List<Nota>) {
@@ -25,8 +24,9 @@ class NotasAdapter(
         parent: ViewGroup,
         viewType: Int
     ): NotaViewHolder {
-        binding = ItemNotaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return NotaViewHolder(binding)
+        val itemBinding =
+            ItemNotaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return NotaViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(
@@ -40,16 +40,20 @@ class NotasAdapter(
         return notas.size
     }
 
-    inner class NotaViewHolder(binding: ItemNotaBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class NotaViewHolder(private val binding: ItemNotaBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(nota: Nota) {
-            val tvTitulo = binding.tvTitulo // itemView.
-            val tvFecha = binding.tvFecha // itemView.
+            itemView.apply {
+                binding.tvTitulo.text =
+                    nota.tituloNota.ifEmpty { "Sin título" }
 
-            tvTitulo.text = nota.tituloNota.ifEmpty { "Sin título" }
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-            tvFecha.text = dateFormat.format(Date(nota.fechaCreacion))
+                val formatoFecha = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+                binding.tvFecha.text = formatoFecha.format(Date(nota.fechaCreacion))
 
-            itemView.setOnClickListener { onNotaClick(nota) }
+                setOnClickListener {
+                    onNotaClick(nota)
+                }
+            }
         }
     }
 }
