@@ -13,4 +13,5 @@ class NotaRepository(private val dao: NotaDao) {
     suspend fun modificar(nota: Nota) = dao.update(nota)
     suspend fun eliminar(nota: Nota) = dao.delete(nota)
     suspend fun eliminarTodas() = dao.deleteAll()
+    fun buscarNotas(texto: String): LiveData<List<Nota>> = dao.buscarNotas(texto)
 }

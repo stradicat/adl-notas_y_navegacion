@@ -28,4 +28,7 @@ interface NotaDao {
 
     @Query("DELETE FROM notas")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM notas WHERE titulo LIKE '%' || :texto || '%' OR contenido LIKE '%' || :texto || '%' ORDER BY fechaCreacion DESC ")
+    fun buscarNotas(texto: String): LiveData<List<Nota>>
 }
