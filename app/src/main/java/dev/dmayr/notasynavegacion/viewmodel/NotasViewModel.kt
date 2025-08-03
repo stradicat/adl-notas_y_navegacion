@@ -17,20 +17,24 @@ class NotasViewModel(application: Application) : AndroidViewModel(application) {
     init {
         val dao = NotaBBDD.getDatabase(application).notaDao()
         repository = NotaRepository(dao)
-        notas = repository.allNotas
+        notas = repository.todasLasNotas
     }
 
     suspend fun agregarNota(nota: Nota): Long {
-        return repository.insert(nota)
+        return repository.insertar(nota)
     }
 
     fun updateNota(nota: Nota) = viewModelScope.launch(Dispatchers.IO) {
-        repository.update(nota)
+        repository.modificar(nota)
     }
 
     fun deleteNota(nota: Nota) = viewModelScope.launch(Dispatchers.IO) {
-        repository.delete(nota)
+        repository.eliminar(nota)
     }
 
-    suspend fun obtenerPorId(id: Long): Nota? = repository.getById(id)
+    fun eliminarTodas() = viewModelScope.launch(Dispatchers.IO) {
+        repository.eliminarTodas()
+    }
+
+    suspend fun obtenerPorId(id: Long): Nota? = repository.encontrarPorId(id)
 }

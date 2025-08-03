@@ -25,4 +25,7 @@ interface NotaDao {
 
     @Query("SELECT * FROM notas WHERE id = :id")
     suspend fun findById(id: Long): Nota?
+
+    @Query("DELETE FROM notas")
+    suspend fun deleteAll()
 }

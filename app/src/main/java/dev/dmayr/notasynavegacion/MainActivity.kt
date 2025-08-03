@@ -2,6 +2,7 @@ package dev.dmayr.notasynavegacion
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -53,6 +54,17 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, DetalleNotaActivity::class.java)
                 intent.putExtra("nota_id", newId)
                 startActivity(intent)
+            }
+        }
+
+        binding.btnBorrarTodasLasTareas.setOnClickListener {
+            lifecycleScope.launch {
+                viewModel.eliminarTodas()
+                Toast.makeText(
+                    this@MainActivity,
+                    "Todas las notas han sido eliminadas",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
