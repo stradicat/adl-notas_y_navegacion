@@ -49,3 +49,4 @@ app/src/main/res/layout/
 - Compatibilidad mínima: API 23 (Marshmallow, Android 6.0)
 - Layout adicional para orientación horizontal
 - `viewModel` para preservar los valores ante cambios de configuración de dispositivo
+- Implementación de barra de búsqueda
