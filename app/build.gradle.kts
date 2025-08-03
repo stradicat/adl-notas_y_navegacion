@@ -69,6 +69,7 @@ dependencies {
 
     // ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
     // JSON serialization library, works with the Kotlin serialization plugin.
     implementation(libs.kotlinx.serialization.json)
