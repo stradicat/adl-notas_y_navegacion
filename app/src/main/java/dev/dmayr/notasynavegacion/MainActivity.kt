@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -25,11 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
 
-        enableEdgeToEdge()
         setContentView(view)
 
         viewModel = ViewModelProvider(this)[NotasViewModel::class.java]

@@ -12,14 +12,18 @@ import kotlinx.coroutines.launch
 
 class DetalleNotaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetalleNotaBinding
+
     private val viewModel: NotasViewModel by viewModels()
+
     private var nota: Nota? = null
     private var notaOriginalVacia = false
 
     override fun onCreate(saved: Bundle?) {
         super.onCreate(saved)
         binding = ActivityDetalleNotaBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        val view = binding.root
+
+        setContentView(view)
 
         val id = intent.getLongExtra("nota_id", -1L)
         lifecycleScope.launch {
